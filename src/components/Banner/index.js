@@ -6,6 +6,9 @@ function Banner(props) {
     <div className="jumbotron">
       <h1>{props.children[0]}</h1>
       <h3>{props.children[1]}</h3>
+      <div class={props.alert}>
+          {props.message}
+        </div>
     </div>
   );
 }

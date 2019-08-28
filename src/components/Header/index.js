@@ -6,7 +6,7 @@ function Header(props) {
     <ul className="nav navbar">
       <li className="nav-item">{props.children[0]}</li>
       <li className="nav-item">
-        <div class={props.alert}>
+        <div className={props.alert}>
           {props.children[1]}
           {props.message}
         </div>

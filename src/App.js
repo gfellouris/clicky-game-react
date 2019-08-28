@@ -15,7 +15,7 @@ var trackCards = [];
 var score = 0;
 var topscore = 0;
 var message = "Click an image to begin!";
-var alert="alert alert-primary"
+var alert = "alert alert-primary";
 class App extends Component {
   state = {
     cards,
@@ -64,14 +64,16 @@ class App extends Component {
     return (
       <div>
         <Header
-          message={this.state.message}
           score={this.state.score}
           topscore={this.state.topscore}
+          message={this.state.message}
           alert={this.state.alert}
         >
           {headerText}
         </Header>
-        <Banner>{bannerText}</Banner>
+        <Banner message={this.state.message} alert={this.state.alert}>
+          {bannerText}
+        </Banner>
         {this.state.cards.map(card => (
           <MemoryCard
             trackCard={this.trackCard}
