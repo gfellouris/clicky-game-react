@@ -1,0 +1,17 @@
+.jumbotron {
+    padding-top: 100px;
+    background: white;
+    background-image: url("./jumbotron_bg.png");
+    height: 300px;
+    flex-flow: row wrap;
+    padding: 50px;
+    justify-content: space-around;
+    align-content: flex-start;
+    overflow: auto;
+    text-align: center;
+  }  
+
+  h1, h3 {
+    color: white;
+    padding: 20px;
+  }
