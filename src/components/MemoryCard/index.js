@@ -9,7 +9,7 @@ function MemoryCard(props) {
       </div>
       <div className="content">
       </div>
-      <span onClick={() => props.trackCard(props.id)} className="remove">
+      <span onClick={() => props.trackCard(props.id, props.name)} className="remove">
         𝘅
       </span>
     </div>

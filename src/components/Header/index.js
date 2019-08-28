@@ -3,11 +3,16 @@ import "./style.css";
 
 function Header(props) {
   return (
-      <ul className="nav navbar">
-        <li className="nav-item">{props.children[0]}</li>
-        <li className="nav-item">{props.children[1]}</li>
-        <li className="nav-item">{props.children[2]}{props.score}</li>
-      </ul>
+    <ul className="nav navbar">
+      <li className="nav-item">{props.children[0]}</li>
+      <li className="nav-item">{props.children[1]}{props.message}</li>
+      <li className="nav-item">
+        {props.children[2]}
+        {props.score}
+        {props.children[3]}
+        {props.topscore}
+      </li>
+    </ul>
   );
 }
 

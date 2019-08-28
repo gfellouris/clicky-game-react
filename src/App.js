@@ -5,11 +5,7 @@ import Header from "./components/Header";
 import cards from "./cards.json";
 // import './App.css';
 
-const headerText = [
-  "Clicky Game",
-  "Click an image to begin!",
-  "Score: 0 | Top Score: "
-];
+const headerText = ["Clicky Game", "", "Score:  ", "| Top Score: "];
 const bannerText = [
   "Clicky Game!",
   "Click on an image to earn points, but don't click on any more than once!"
@@ -18,23 +14,34 @@ const bannerText = [
 var trackCards = [];
 var score = 0;
 var topscore = 0;
+var message = "Click an image to begin!";
 class App extends Component {
   state = {
     cards,
     score,
     topscore,
+    message,
     trackCards
   };
 
-  trackCard = id => {
+  trackCard = (id, name) => {
     // Filter this.state.friends for friends with an id not equal to the id being removed
     // const cards = this.state.cards.filter(card => card.id !== id);
-    trackCards.push(id);
-    score++;
-    // Set this.state.friends equal to the new friends array
-    this.setState({ trackCards, score });
-    console.log(trackCards);
-    console.log(`score = ${this.state.score}`);
+    if (trackCards.includes(id)) {
+      if (score > topscore) {
+        topscore = score;
+      }
+      message = "You already clicked " + name;
+      score = 0;
+      trackCards = [];
+      this.setState({ trackCards, score, topscore, message });
+    } else {
+      trackCards.push(id);
+      score++;
+      message = "You clicked " + name;
+      // Set this.state.friends equal to the new friends array
+      this.setState({ trackCards, score, topscore, message });
+    }
     this.setState.cards = this.randomCards(cards);
   };
 
@@ -52,7 +59,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header score={this.state.score}>{headerText}</Header>
+        <Header
+          message={this.state.message}
+          score={this.state.score}
+          topscore={this.state.topscore}
+        >
+          {headerText}
+        </Header>
         <Banner>{bannerText}</Banner>
         {this.state.cards.map(card => (
           <MemoryCard
@@ -60,6 +73,7 @@ class App extends Component {
             id={card.id}
             key={card.id}
             image={card.image}
+            name={card.name}
           />
         ))}
       </div>
