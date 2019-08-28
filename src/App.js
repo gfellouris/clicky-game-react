@@ -15,12 +15,14 @@ var trackCards = [];
 var score = 0;
 var topscore = 0;
 var message = "Click an image to begin!";
+var alert="alert alert-primary"
 class App extends Component {
   state = {
     cards,
     score,
     topscore,
     message,
+    alert,
     trackCards
   };
 
@@ -31,16 +33,18 @@ class App extends Component {
       if (score > topscore) {
         topscore = score;
       }
-      message = "You already clicked " + name;
+      message = "You already clicked " + name + ". Try again!";
+      alert = "alert alert-danger";
       score = 0;
       trackCards = [];
-      this.setState({ trackCards, score, topscore, message });
+      this.setState({ trackCards, score, topscore, message, alert });
     } else {
       trackCards.push(id);
       score++;
       message = "You clicked " + name;
+      alert = "alert alert-success";
       // Set this.state.friends equal to the new friends array
-      this.setState({ trackCards, score, topscore, message });
+      this.setState({ trackCards, score, topscore, message, alert });
     }
     this.setState.cards = this.randomCards(cards);
   };
@@ -63,6 +67,7 @@ class App extends Component {
           message={this.state.message}
           score={this.state.score}
           topscore={this.state.topscore}
+          alert={this.state.alert}
         >
           {headerText}
         </Header>

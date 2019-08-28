@@ -10,7 +10,7 @@ function MemoryCard(props) {
       <div className="content">
       </div>
       <span onClick={() => props.trackCard(props.id, props.name)} className="remove">
-        𝘅
+      x
       </span>
     </div>
   );
